@@ -1,10 +1,10 @@
 import { create } from 'zustand';
-interface Appstate{
-    selectedTopic:string | null
-    setSelectedTopic:any
+interface TopicState {
+    selectedTopic: string | null
+    setSelectedTopic: any
 }
 
-const useTopicStore = create<Appstate>((set) => ({
+const useTopicStore = create<TopicState>((set) => ({
   selectedTopic: null, // Initially, no topic is selected
   setSelectedTopic: (topic:string) => set({ selectedTopic: topic }), // Function to update the selected topic
 }));

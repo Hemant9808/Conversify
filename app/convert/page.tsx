@@ -1,7 +1,7 @@
 "use client";
 
 import useSpeechToText from "react-hook-speech-to-text";
-import useTopicStore from "../store/topicSlice";
+// import useTopicStore from "../store/topicSlice";
 import { useState, useEffect, useRef } from "react";
 import { ChevronDown, X, Trash2, Play, Pause, RotateCcw, Clock, Edit, Mic, MicOff, Volume2, Download } from "lucide-react";
   
@@ -201,8 +201,8 @@ export default function AnyComponent() {
   };
 
   const deleteHint = (indexToDelete: number) => {
-    setHints((prevHints: any) => 
-      prevHints.filter((_: any, index: number) => index !== indexToDelete)
+    setHints((prevHints: Hint[]) => 
+      prevHints.filter((_: Hint, index: number) => index !== indexToDelete)
     );
   };
 
@@ -329,7 +329,7 @@ export default function AnyComponent() {
     return () => {
       recordings.forEach(rec => URL.revokeObjectURL(rec.url));
     };
-  }, []);
+  }, [recordings]);
 
   if (speechError) return <p>Web Speech API is not available in this browser 🤷‍</p>;
 

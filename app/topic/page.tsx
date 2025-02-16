@@ -8,6 +8,7 @@ import useTopicStore from "../store/topicSlice";
 import { useRouter } from 'next/navigation'
 import { useSearchParams } from 'next/navigation'
 import { useNavigate } from "react-router-dom";
+
 const FetchTopics = () => {
   const [topics, setTopics] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -53,7 +54,7 @@ const FetchTopics = () => {
       setError(null);
       const result = await model.generateContent(getPrompt(userInput));
       console.log("result", result);
-      //@ts-ignore
+      //@ts-expect-error Server Component
       const rawContent = result.response.candidates[0].content.parts[0].text;
       console.log("rawContent", rawContent);
       if (!rawContent) {

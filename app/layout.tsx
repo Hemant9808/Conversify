@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body>
+        <body className={`${geistSans.variable} ${geistMono.variable}`}>
           <header className="fixed top-0 w-full bg-gray-800/40 backdrop-blur-sm z-50">
             <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
               <nav className="flex gap-6">

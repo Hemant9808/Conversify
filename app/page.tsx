@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
-import { ArrowRight, Mic, Brain, Sparkles, Clock } from 'lucide-react';
+import { ArrowRight, Mic, Brain, Clock } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -98,7 +98,7 @@ function FeatureCard({ icon, title, description }: { icon: React.ReactNode, titl
 function TestimonialCard({ quote, author, role }: { quote: string, author: string, role: string }) {
   return (
     <div className="bg-gray-900/30 backdrop-blur-sm p-6 rounded-xl border border-gray-800">
-      <p className="text-gray-300 mb-4">"{quote}"</p>
+      <p className="text-gray-300 mb-4">{'This platform has transformed my English speaking abilities completely!'}</p>
       <div className="text-sm">
         <p className="font-semibold">{author}</p>
         <p className="text-gray-500">{role}</p>
