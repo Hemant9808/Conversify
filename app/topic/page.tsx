@@ -71,9 +71,9 @@ const FetchTopics = () => {
         setTopics(parsedData.topics || []);
         console.log("parsed data", parsedData);
       }
-    } catch (err: unknown) {
-      const error = err as Error;
-      setError(error.message);
+    } catch (err: any) {
+      
+      setError(err);
     } finally {
       setLoading(false);
     }
