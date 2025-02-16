@@ -71,8 +71,9 @@ const FetchTopics = () => {
         setTopics(parsedData.topics || []);
         console.log("parsed data", parsedData);
       }
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      const error = err as Error;
+      setError(error.message);
     } finally {
       setLoading(false);
     }
@@ -89,11 +90,6 @@ const FetchTopics = () => {
     router.push(`/convert?${params.toString()}`);
     // // Update the selected topic in the Zustand store
   };
-
-  // Add error interface
-  interface ApiError {
-    message: string;
-  }
 
   return (
 

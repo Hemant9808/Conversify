@@ -27,10 +27,6 @@ interface GenerativeResponse {
   hints: Hint[];
 }
 
-interface ErrorResponse {
-  message: string;
-}
-
 // interface ResultType {
 //   transcript: string;
 //   timestamp: number;
@@ -141,8 +137,9 @@ export default function AnyComponent() {
         setHints(data.hints);
         setLatestHints([]);
       }
-    } catch (err: ErrorResponse) {
-      console.error("Error fetching hints:", err.message);
+    } catch (err: unknown) {
+      const error = err as Error;
+      console.error("Error fetching hints:", error.message);
     } finally {
       setLoadingHints(false);
     }
@@ -193,8 +190,9 @@ export default function AnyComponent() {
 
       const data = await response.json();
       setUploadStatus(`Upload successful! Audio URL: ${data.url}`);
-    } catch (error) {
-      console.error("Error uploading audio:", error);
+    } catch (err: unknown) {
+      const error = err as Error;
+      console.error("Error uploading audio:", error.message);
       setUploadStatus("Failed to upload audio.");
     }
   };
