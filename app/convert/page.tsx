@@ -204,7 +204,7 @@ export default function AnyComponent() {
 
   const deleteHint = (indexToDelete: number) => {
     setHints((prevHints: Hint[]) => 
-      prevHints.filter((_: Hint, index: number) => index !== indexToDelete)
+      prevHints.filter((_, index: number) => index !== indexToDelete)
     );
   };
 
