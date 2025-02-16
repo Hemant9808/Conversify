@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import UserDropdown from './components/UserDropdown'
+import Link from 'next/link'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,27 +26,36 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // <html lang="en">
-    //   <body
-    //     className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-    //   >
-    //     {children}
-    //   </body>
-    // </html>
     <ClerkProvider>
-    <html lang="en">
-      <body>
-        <header>
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-        </header>
-        <main>{children}</main>
-      </body>
-    </html>
-  </ClerkProvider>
+      <html lang="en">
+        <body>
+          <header className="fixed top-0 w-full bg-gray-800/40 backdrop-blur-sm z-50">
+            <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+              <nav className="flex gap-6">
+                <Link href="/" className="text-white/80 hover:text-white transition-colors">
+                  Home
+                </Link>
+                <SignedIn>
+                  <Link href="/topic" className="text-white/80 hover:text-white transition-colors">
+                    Practice
+                  </Link>
+                </SignedIn>
+                <SignedOut>
+                  <SignInButton mode="modal">
+                    <button className="text-white/80 hover:text-white transition-colors">
+                      Practice
+                    </button>
+                  </SignInButton>
+                </SignedOut>
+              </nav>
+              <UserDropdown />
+            </div>
+          </header>
+          <main className="pt-16">
+            {children}
+          </main>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
