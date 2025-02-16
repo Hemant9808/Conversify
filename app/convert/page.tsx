@@ -3,7 +3,7 @@
 import useSpeechToText from "react-hook-speech-to-text";
 // import useTopicStore from "../store/topicSlice";
 import { useState, useEffect, useRef } from "react";
-import { ChevronDown, X, Trash2, Play, Pause, RotateCcw, Clock, Edit, Mic, MicOff, Volume2, Download } from "lucide-react";
+import { ChevronDown, X, Trash2, Play, Pause, RotateCcw, Clock, Edit, Mic, MicOff, Download } from "lucide-react";
   
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
@@ -27,10 +27,10 @@ interface GenerativeResponse {
   hints: Hint[];
 }
 
-interface ResultType {
-  transcript: string;
-  timestamp: number;
-}
+// interface ResultType {
+//   transcript: string;
+//   timestamp: number;
+// }
 
 export default function AnyComponent() {
   const {

@@ -1,13 +1,13 @@
 "use client";
 
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { BackgroundGradientAnimation } from "../components/ui/gradient-bg";
+// import axios from "axios";
+import {  useState } from "react";
+// import { BackgroundGradientAnimation } from "../components/ui/gradient-bg";
 import useTopicStore from "../store/topicSlice";
 import { useRouter } from 'next/navigation'
 import { useSearchParams } from 'next/navigation'
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const FetchTopics = () => {
   const [topics, setTopics] = useState([]);

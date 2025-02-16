@@ -95,7 +95,7 @@ function FeatureCard({ icon, title, description }: { icon: React.ReactNode, titl
   );
 }
 
-function TestimonialCard({ quote, author, role }: { quote: string, author: string, role: string }) {
+function TestimonialCard({  author, role }: { quote?: string, author: string, role: string }) {
   return (
     <div className="bg-gray-900/30 backdrop-blur-sm p-6 rounded-xl border border-gray-800">
       <p className="text-gray-300 mb-4">{'This platform has transformed my English speaking abilities completely!'}</p>
