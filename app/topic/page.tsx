@@ -64,14 +64,14 @@ const FetchTopics = () => {
       const jsonMatch = rawContent.match(/```json\n([\s\S]*?)\n```/);
       if (!jsonMatch || !jsonMatch[1]) {
         throw new Error("Failed to extract JSON from the response.");
-      }0
+      }
 
       if (jsonMatch) {
-        const parsedData = JSON.parse(jsonMatch[1]); // Extract the JSON object
+        const parsedData = JSON.parse(jsonMatch[1]);
         setTopics(parsedData.topics || []);
         console.log("parsed data", parsedData);
       }
-    } catch (err:any) {
+    } catch (err: any) {
       setError(err.message);
     } finally {
       setLoading(false);
@@ -90,6 +90,10 @@ const FetchTopics = () => {
     // // Update the selected topic in the Zustand store
   };
 
+  // Add error interface
+  interface ApiError {
+    message: string;
+  }
 
   return (
 

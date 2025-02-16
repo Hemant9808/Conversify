@@ -27,6 +27,10 @@ interface GenerativeResponse {
   hints: Hint[];
 }
 
+interface ErrorResponse {
+  message: string;
+}
+
 // interface ResultType {
 //   transcript: string;
 //   timestamp: number;
@@ -137,8 +141,8 @@ export default function AnyComponent() {
         setHints(data.hints);
         setLatestHints([]);
       }
-    } catch (error) {
-      console.error("Error fetching hints:", error);
+    } catch (err: ErrorResponse) {
+      console.error("Error fetching hints:", err.message);
     } finally {
       setLoadingHints(false);
     }

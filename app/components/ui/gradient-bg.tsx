@@ -75,15 +75,15 @@ const abc=()=>{
       if (!interactiveRef.current) {
         return;
       }
-      setCurX(curX + (tgX - curX) / 20);
-      setCurY(curY + (tgY - curY) / 20);
+      setCurX(prev => prev + (tgX - prev) / 20);
+      setCurY(prev => prev + (tgY - prev) / 20);
       interactiveRef.current.style.transform = `translate(${Math.round(
         curX,
       )}px, ${Math.round(curY)}px)`;
     }
 
     move();
-  }, [tgX, tgY]);
+  }, [tgX, tgY, curX, curY]);
 
   const [isSafari, setIsSafari] = useState(false);
   useEffect(() => {
