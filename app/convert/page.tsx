@@ -487,6 +487,7 @@ export default function AnyComponent() {
 
                 <div className="space-y-3 mt-4">
                   { hints && hints.length > 0 ? (
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     hints.map((hint: any, index: number) => (
                       <div 
                         key={index} 

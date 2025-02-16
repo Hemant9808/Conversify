@@ -71,6 +71,7 @@ const FetchTopics = () => {
         setTopics(parsedData.topics || []);
         console.log("parsed data", parsedData);
       }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       
       setError(err);
