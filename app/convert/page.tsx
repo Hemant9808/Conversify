@@ -78,19 +78,19 @@ export default function AnyComponent() {
   const audioChunksRef = useRef<Blob[]>([]);
   const timerIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // useEffect(() => {
-  //   if (isRunning && time > 0) {
-  //     timerRef.current = setInterval(() => {
-  //       setTime((prev) => prev - 1);
-  //     }, 1000);
-  //   } else if (time === 0) {
-  //     setIsRunning(false);
-  //   }
+  useEffect(() => {
+    if (isRunning && time > 0) {
+      timerRef.current = setInterval(() => {
+        setTime((prev) => prev - 1);
+      }, 1000);
+    } else if (time === 0) {
+      setIsRunning(false);
+    }
 
-  //   return () => {
-  //     if (timerRef.current) clearInterval(timerRef.current);
-  //   };
-  // }, [isRunning, time]);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [isRunning, time]);
 
   useEffect(() => {
     if (isRunning && time > 0) {
@@ -123,7 +123,7 @@ export default function AnyComponent() {
   const handleTopicSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     if (customTopic.trim()) {
-      window.history.pushState({}, '', `?topic=${encodeURIComponent(customTopic.trim())}`);
+      // window.history.pushState({}, '', `?topic=${encodeURIComponent(customTopic.trim())}`);
       setShowTopicInput(false);
       setCustomTopic("");
       await fetchHints();
