@@ -174,6 +174,7 @@ export default function AnyComponent() {
 
   const createAudioFile = () => {
     const transcript = results
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .map((r:any) => (typeof r === 'string' ? r : r?.transcript))
       .join(" ");
     const blob = new Blob([transcript], { type: "audio/wav" });
