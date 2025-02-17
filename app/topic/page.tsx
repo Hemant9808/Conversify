@@ -15,7 +15,7 @@ const FetchTopics = () => {
   const [error, setError] = useState(null);
   const [userInput, setUserInput] = useState("");
   const { setSelectedTopic ,selectedTopic} = useTopicStore();
-  const router = useRouter()
+  // const router = useRouter()
   // const navigate = useNavigate();
   console.log('selectedTopic',selectedTopic)
   const searchParams = useSearchParams()
@@ -80,17 +80,17 @@ const FetchTopics = () => {
     }
   };
 
-  const handleTopicSelection = (topic:string) => {
-    const params = new URLSearchParams(searchParams.toString())
-    setSelectedTopic(topic);
-    params.set('topic', topic)
-    // window.history.pushState("/convert", '/convert', `?${params.toString()}`) 
-    // router.push('/convert',params.toString())
-    params.set("topic", topic);
-    // navigate(`/convert?${params.toString()}`);
-    router.push(`/convert?${params.toString()}`);
-    // // Update the selected topic in the Zustand store
-  };
+  // const handleTopicSelection = (topic:string) => {
+  //   const params = new URLSearchParams(searchParams.toString())
+  //   setSelectedTopic(topic);
+  //   params.set('topic', topic)
+  //   // window.history.pushState("/convert", '/convert', `?${params.toString()}`) 
+  //   // router.push('/convert',params.toString())
+  //   params.set("topic", topic);
+  //   // navigate(`/convert?${params.toString()}`);
+  //   router.push(`/convert?${params.toString()}`);
+  //   // // Update the selected topic in the Zustand store
+  // };
 
   return (
 
@@ -117,7 +117,9 @@ const FetchTopics = () => {
           {error && <p style={{ color: "red" }}>Error: {error}</p>}
           <ul className="mt-5">
             {topics.map((topic, index) => (
-            <li className="bg-gray-600 mb-3 p-3 rounded cursor-pointer" onClick={()=>handleTopicSelection(topic)} key={index}>{topic}</li>
+            <li className="bg-gray-600 mb-3 p-3 rounded cursor-pointer" 
+            // onClick={()=>handleTopicSelection(topic)}
+             key={index}>{topic}</li>
 
             ))}
           </ul>
