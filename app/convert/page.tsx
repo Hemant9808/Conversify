@@ -78,6 +78,20 @@ export default function AnyComponent() {
   const audioChunksRef = useRef<Blob[]>([]);
   const timerIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
+  // useEffect(() => {
+  //   if (isRunning && time > 0) {
+  //     timerRef.current = setInterval(() => {
+  //       setTime((prev) => prev - 1);
+  //     }, 1000);
+  //   } else if (time === 0) {
+  //     setIsRunning(false);
+  //   }
+
+  //   return () => {
+  //     if (timerRef.current) clearInterval(timerRef.current);
+  //   };
+  // }, [isRunning, time]);
+
   useEffect(() => {
     if (isRunning && time > 0) {
       timerRef.current = setInterval(() => {
@@ -160,7 +174,7 @@ export default function AnyComponent() {
 
   const createAudioFile = () => {
     const transcript = results
-      .map((r) => (typeof r === 'string' ? r : r?.transcript))
+      .map((r:any) => (typeof r === 'string' ? r : r?.transcript))
       .join(" ");
     const blob = new Blob([transcript], { type: "audio/wav" });
     return blob;
